@@ -31,6 +31,7 @@ let sixteenthLengthSeconds = 0;
 let swing = 0;
 let swingDelaySeconds = 0;
 const scoreUpdateJitterAmt = 0.4;
+let mute = [false, false, false];
 
 const start = () => {
   const playBtn = document.getElementById("play");
@@ -132,8 +133,9 @@ const setup = async () => {
         } else if (note.instrument === 2) {
           instrument = nd.constants.MidiPitchToDrumInstrument[note.pitch];
         }
-
-        nd.playNote(instrument, note, duration, time);
+        if (!mute[note.instrument]) {
+          nd.playNote(instrument, note, duration, time);
+        }
       }
     },
     Array.from(Array(64).keys()),
@@ -398,6 +400,26 @@ const setButtonEvents = () => {
       drumMachine.hoveringSounds[8 - i] = false;
     };
   }
+
+  // mute
+  const MELODY = 0;
+  const BASS = 1;
+  const DRUM = 2;
+  const muteButtons = [
+    document.getElementById("mute-melody"),
+    document.getElementById("mute-bass"),
+    document.getElementById("mute-drum")
+  ];
+  muteButtons.forEach((btn, i) => {
+    btn.addEventListener("click", () => {
+      if (mute[i]) {
+        btn.firstChild.textContent = "🔈";
+      } else {
+        btn.firstChild.textContent = "🔇";
+      }
+      mute[i] = !mute[i];
+    });
+  });
 };
 
 const draw = () => {

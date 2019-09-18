@@ -10,7 +10,6 @@ export default class NeuralDAW {
     this.score = {};
 
     this.initConstants();
-    // this.initScore();
     this.initSounds();
   }
 
@@ -76,99 +75,6 @@ export default class NeuralDAW {
       MidiPitchToDrumInstrument
     };
   }
-
-  // initScore() {
-  //   const MVAE_CKPT =
-  //     "https://storage.googleapis.com/magentadata/js/checkpoints/music_vae/trio_4bar";
-  //   const mvae = new mm.MusicVAE(MVAE_CKPT);
-
-  //   async function generateTrio(temperature, stepsPerQuarter, qpm) {
-  //     return (await mvae.sample(
-  //       1,
-  //       temperature,
-  //       undefined,
-  //       stepsPerQuarter,
-  //       qpm
-  //     ))[0];
-  //   }
-
-  //   const updateTrioInstruments = async (
-  //     oldTrio,
-  //     updateInstruments,
-  //     jitterAmt,
-  //     temperature,
-  //     stepsPerQuarter,
-  //     qpm
-  //   ) => {
-  //     if (updateInstruments.length === 0) {
-  //       return oldTrio;
-  //     }
-
-  //     let z = await mvae.encode([oldTrio]);
-
-  //     if (jitterAmt !== undefined) {
-  //       const zJitter = tf.tidy(() => {
-  //         const jitter = tf.randomNormal(z.shape);
-  //         const linterp = tf.add(
-  //           tf.mul(jitterAmt, jitter),
-  //           tf.mul(1 - jitterAmt, z)
-  //         );
-  //         return linterp;
-  //       });
-  //       z.dispose();
-  //       z = zJitter;
-  //     }
-
-  //     const newTrio = (await mvae.decode(
-  //       z,
-  //       temperature,
-  //       undefined,
-  //       stepsPerQuarter,
-  //       qpm
-  //     ))[0];
-  //     z.dispose();
-
-  //     const oldNotes = oldTrio.notes;
-  //     const newNotes = newTrio.notes;
-
-  //     const mergedNotes = [];
-  //     const {
-  //       AllInstruments,
-  //       Instruments,
-  //       MidiPitchToDrumInstrument
-  //     } = this.constants;
-
-  //     for (let i = 0; i < AllInstruments.length; ++i) {
-  //       const ins = AllInstruments[i];
-  //       const update = updateInstruments.indexOf(ins) >= 0;
-  //       const noteSource = update ? newNotes : oldNotes;
-  //       for (let j = 0; j < noteSource.length; ++j) {
-  //         const note = noteSource[j];
-  //         if (ins === Instruments.MLDY && note.instrument === 0) {
-  //           mergedNotes.push(note);
-  //         } else if (ins === Instruments.BASS && note.instrument === 1) {
-  //           mergedNotes.push(note);
-  //         } else if (note.instrument === 2) {
-  //           if (ins === MidiPitchToDrumInstrument[note.pitch]) {
-  //             mergedNotes.push(note);
-  //           }
-  //         }
-  //       }
-  //     }
-
-  //     // TODO(chrisdonahue): Sort notes
-
-  //     newTrio.notes = mergedNotes;
-
-  //     return newTrio;
-  //   };
-
-  //   this.mm = mm;
-  //   this.score = {
-  //     generateTrio,
-  //     updateTrioInstruments
-  //   };
-  // }
 
   initSounds() {
     const tone = mm.Player.tone;
