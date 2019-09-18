@@ -18,7 +18,7 @@ button {
   opacity: 0.85;
   transition: opacity 0.3s; }
   button:hover {
-    opacity: 1.0; }
+    opacity: 1; }
 
 .container {
   height: 100%; }
@@ -65,14 +65,21 @@ button {
       .container .interface .melodies .block-wrapper {
         height: 15vh; }
       .container .interface .melodies .melody {
+        position: relative;
         background-color: #353535;
         border-radius: 10px;
         width: 100%; }
     .container .interface .drum-sequencer {
+      position: relative;
       background-color: #353535;
       border-radius: 10px;
       width: 100%;
       padding: 0.5rem 1rem; }
+    .container .interface .mute {
+      position: absolute;
+      z-index: 10;
+      right: 0.5rem;
+      top: 0.5rem; }
   .container .control {
     height: 3.5vh;
     margin: 0 auto 0 auto;
@@ -93,16 +100,16 @@ button {
       width: 4rem;
       max-width: 150px;
       height: 30px; }
-    .container .control input[type=range] {
+    .container .control input[type="range"] {
       -webkit-appearance: none;
       /*hide the outline behind the border*/
       /* for ie */ }
-      .container .control input[type=range]::-webkit-slider-runnable-track {
+      .container .control input[type="range"]::-webkit-slider-runnable-track {
         height: 10px;
         background: #ddd;
         border: none;
         border-radius: 3px; }
-      .container .control input[type=range]::-webkit-slider-thumb {
+      .container .control input[type="range"]::-webkit-slider-thumb {
         -webkit-appearance: none;
         border: none;
         height: 16px;
@@ -110,31 +117,31 @@ button {
         border-radius: 50%;
         background: #fd90a0;
         margin-top: -3px; }
-      .container .control input[type=range]:focus {
+      .container .control input[type="range"]:focus {
         outline: none; }
-      .container .control input[type=range]:focus::-webkit-slider-runnable-track {
+      .container .control input[type="range"]:focus::-webkit-slider-runnable-track {
         background: #ccc; }
-      .container .control input[type=range] {
+      .container .control input[type="range"] {
         /* fix for FF unable to apply focus style bug  */
         border: 1px solid white;
         /*required for proper track sizing in FF*/ }
-      .container .control input[type=range]::-moz-range-track {
+      .container .control input[type="range"]::-moz-range-track {
         height: 5px;
         background: #ddd;
         border: none;
         border-radius: 3px; }
-      .container .control input[type=range]::-moz-range-thumb {
+      .container .control input[type="range"]::-moz-range-thumb {
         border: none;
         height: 16px;
         width: 16px;
         border-radius: 50%;
         background: #fd90a0; }
-      .container .control input[type=range]:-moz-focusring {
+      .container .control input[type="range"]:-moz-focusring {
         outline: 1px solid white;
         outline-offset: -1px; }
-      .container .control input[type=range]:focus::-moz-range-track {
+      .container .control input[type="range"]:focus::-moz-range-track {
         background: #ccc; }
-      .container .control input[type=range]::-ms-track {
+      .container .control input[type="range"]::-ms-track {
         width: 300px;
         height: 5px;
         /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
@@ -144,21 +151,21 @@ button {
         border-width: 6px 0;
         /*remove default tick marks*/
         color: transparent; }
-      .container .control input[type=range]::-ms-fill-lower {
+      .container .control input[type="range"]::-ms-fill-lower {
         background: #777;
         border-radius: 10px; }
-      .container .control input[type=range]::-ms-fill-upper {
+      .container .control input[type="range"]::-ms-fill-upper {
         background: #ddd;
         border-radius: 10px; }
-      .container .control input[type=range]::-ms-thumb {
+      .container .control input[type="range"]::-ms-thumb {
         border: none;
         height: 16px;
         width: 16px;
         border-radius: 50%;
         background: goldenrod; }
-      .container .control input[type=range]:focus::-ms-fill-lower {
+      .container .control input[type="range"]:focus::-ms-fill-lower {
         background: #888; }
-      .container .control input[type=range]:focus::-ms-fill-upper {
+      .container .control input[type="range"]:focus::-ms-fill-upper {
         background: #ccc; }
 
 .tooltip {
