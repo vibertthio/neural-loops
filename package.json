@@ -4,6 +4,7 @@
   "description": "play with machine learning models to generate music.",
   "scripts": {
     "build": "webpack --config webpack/webpack.config.prod.js  --colors",
+    "build-readable": "webpack --config webpack/webpack.config.readable.js  --colors",
     "start": "webpack-dev-server --quiet --open --config webpack/webpack.config.dev.js",
     "postbuild": "gh-pages -d build",
     "deploy": "gh-pages -d build"
